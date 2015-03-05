@@ -1,0 +1,54 @@
+<div class="container-fluid" style="background-color: #3B5998;">
+	<div class="span10" style="margin:2% 10%;">
+		<ul class="nav nav-pills">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">Profile</a></li>
+		  <li><a href="#">Messages</a></li>
+		</ul>
+
+		<div class="clearfix">
+			<div class="col-lg-4" style="margin:5% 0%;">
+				<div class="input-group">
+				  <input type="text" class="form-control" ng-model="userArtist" placeholder="Enter Artist Name">
+				  <span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="getArtistName()">Search</button>
+				  </span>
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<p>Select An Artist</p>
+			<div class="input-group input-group-lg" >
+				<select style="padding:4px;min-width: 450px;" class="form-control" ng-model="userSeletectArtist">
+					<option ng-repeat="name in artisName" value={{name}}>{{name}}</option>
+				</select>
+			</div>
+			
+			<div id="bodyContainer" style="margin:5% 0;" ng-show="showAlbum">
+				<div class="panel panel-primary col-lg-6" style="margin:0% 0%;width: 30%;">
+					<div class="panel-heading">
+						<p ng-show="showAlbum"> Albums For Selected Artist</p>
+						<p>Click on Album to get Tracks </p>
+					</div>
+					<div >
+						<ul style="list-style-type: none;">
+							<li ng-repeat="album in artisAlbums" ng-click="getAlbumTrack(album)"><button>{{album}}</button></li>
+						</ul>
+					</div>
+				</div>	
+				
+				<div class="panel panel-default" ng-show="showTracks" style="margin:0% 5%;width: 60%;float: left">
+					<div class="panel-heading">
+						<h3 class="panel-title">Tracks in <b>{{currentAlbumForTrack}}</b></h3>
+					</div>
+					<div class="panel-body">
+						<ul style="list-style-type: square;">
+							<li ng-repeat="track in tracks">{{track}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
+</div>
+</div>
